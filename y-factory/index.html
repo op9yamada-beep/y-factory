@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y-Factory 活動記録</title>
+    <style>
+        /* 全体のベーススタイル */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: radial-gradient(circle at 50% 0%, #1e293b, #0b0f19);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            background-color: #ffffff;
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8), 
+                inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+            box-sizing: border-box;
+            padding: 60px 40px;
+            border-radius: 24px;
+            margin: 60px auto; 
+        }
+        /* ヘルパー（上部エリア） */
+        .header-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-img {
+            width: 788px;
+            height: 211px;
+            object-fit: contain;
+        }
+
+        /* セクション共通 */
+        section {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff4500;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        /* ご挨拶セクション */
+        .intro-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 16px;
+            max-width: 750px;
+            margin: 30px auto;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            border: 1px solid #f1f5f9;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #2563eb; 
+            margin-bottom: 16px;
+        }
+
+        /* 本文のスタイル */
+        .intro-text {
+            font-size: 0.8rem;
+            color: #334155;
+            line-height: 1.8;
+        }
+
+        /* プロジェクトセクション */
+        .section-header {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #2563eb; 
+            margin: 0;
+        }
+        /* プロジェクトカード全体の枠組み */
+        .project-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            max-width: 750px;
+            margin: 20px auto;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+                
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            transition: all 0.3s ease;
+        }
+
+        /* マウスを乗せたときにフワッと浮くエフェクト */
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: #cbd5e1;
+        }
+
+        /* 左側のプロジェクト名が入るボックス */
+        .project-name-box {
+            flex-shrink: 0;
+            min-width: 140px;
+            text-align: center;
+        }
+        /* プロジェクト名（タイトル）のデザイン */
+        .project-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+         }
+
+         /* 右側の説明文が入るボックス */
+         .project-desc-box {
+             font-size: 0.95rem;
+             color: #475569;
+            line-height: 1.6;
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        /* 活動主セクション */
+        .creator-section {
+            background-color: #f8fafc; 
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 500px;
+            margin: 30px auto;
+        }
+        .creator-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .creator-avatar {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            flex-shrink: 0;
+        }
+
+        .creator-info .creator-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .creator-info .creator-desc {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.4;
+        }
+        .site-footer {
+            margin: 40px auto 0 auto;
+            border: none;
+            box-shadow: none;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- ヘルパー＆ロゴ・歯車エリア -->
+        <div class="header-area">
+            <img src="img/topimage.png" alt="Y-Factory Logo" class="logo-img">
+        </div>
+        <!-- ご挨拶 -->
+        <section class="intro-section">
+            <div class="section-header">
+                <h2 class="section-title">Introduction</h2>
+            </div>
+            <div class="intro-card">
+                <p class="intro-text">
+                    システム開発を通じて「夢を形にする」ことを使命に、関西を拠点に活動するフルスタックエンジニア。<br>
+                    確かな技術力と、小規模事業者への親身なサポートを強みに、価値あるプロダクトを届けます。
+                </p>
+            </div>
+        </section>
+
+        <!-- プロジェクト -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">PROJECTS</h2>
+            </div>
+            <div class="project-card">
+                <div class="project-name-box">
+                    <span class="project-name">micro-ec</span>
+                </div>
+                <div class="project-desc-box">
+                    お店と地域が密接につながる、小規模なECサイト・コミュニティ。<br>
+                    大阪の酒蔵や地域の店舗をITで支援するプラットフォームです。
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-name-box">
+                    <span class="project-name">Delivery Manager</span>
+                </div>
+                <div class="project-desc-box">
+                    物流プロセスの可視化と最適化を。<br>
+                    配送物のステータスをリアルタイムに管理し、サプライチェーンの滞りを防ぐスマートな納品管理システムです。
+                </div>
+            </div>
+        </section>
+
+        <!-- 活動主 -->
+        <section class="creator-section">
+            <div class="section-title">CREATOR</div>
+            <div class="creator-box">
+                <div class="creator-avatar">
+                    <img src="img/face.png" alt="山田 豊の顔イメージ" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                </div>
+                <div class="creator-info">
+                    <div class="creator-name">山田 豊</div>
+                    <div class="creator-desc">システムエンジニア・Javaを中心としたフルスタックエンジニア。<br>
+                        小規模事業者のIT導入支援や、スマホアドバイザーとしての経験を活かした温かいサポートを得意としています。</div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="site-footer">© Y-Factory. All Rights Reserved. </div>
+        </section>
+    </div>
+
+</body>
+</html>
