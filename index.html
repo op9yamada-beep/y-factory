@@ -5,6 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Y-Factory 活動記録</title>
     <style>
+        /* --- スマホなどの狭い画面（幅768px以下）向けの調整 --- */
+    @media screen and (max-width: 768px) {
+        /* 1. ページ全体やカードの左右の余白をすっきりさせる */
+        body {
+            padding: 15px;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* 2. 大きすぎるトップ画像をスマホの画面幅に綺麗に収める */
+        img, svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* 3. プロジェクトカードのレイアウトを縦並びにして見やすくする */
+        .project-card, .project-name-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px 15px;
+        }
+
+        /* 4. プロジェクト名や文字のサイズをスマホ用に調整 */
+        .project-name {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+    }
         /* 全体のベーススタイル */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
