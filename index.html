@@ -6,46 +6,68 @@
     <title>Y-Factory 活動記録</title>
     <style>
         /* --- スマホなどの狭い画面（幅768px以下）向けの調整 --- */
-    @media screen and (max-width: 768px) {
-        /* 1. ページ全体やカードの左右の余白をすっきりさせる */
-        body {
-            padding: 15px;
-            margin: 0;
-            overflow-x: hidden;
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 0;
+                margin: 0;
+                overflow-x: hidden;
+            }
+            .container {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 15px 10px !important;
+                margin: 0 !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+            }
+            .logo-img {
+                width: 100% !important;
+                height: auto !important;
+                max-height: 120px;
+                object-fit: contain;
+            }
+
+            .header-area {
+                margin-bottom: 20px !important;
+            }
+
+            section {
+                margin-bottom: 25px !important;
+            }
+
+            .intro-card {
+                padding: 12px !important;
+                margin: 15px auto !important;
+            }
+            .project-card {
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                padding: 15px !important;
+                gap: 10px !important;
+                margin: 10px auto !important;
+            }
+
+            .project-desc-box {
+                text-align: center !important;
+            }
+
+            .creator-section {
+                padding: 15px !important;
+                margin: 15px auto !important;
+            }
+
+            .creator-box {
+                flex-direction: column !important;
+                gap: 15px !important;
+                text-align: center !important;
+            }
+
+            .creator-info {
+                text-align: center !important;
+            }
         }
 
-        .container {
-            width: 100%;
-            max-width: 850px;
-            background-color: #ffffff;
-            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8), 
-                inset 0 0 0 1px rgba(255, 255, 255, 0.8);
-            box-sizing: border-box;
-            padding: 10px 10px !important;
-            border-radius: 24px;
-            margin: 60px auto; 
-        }
-
-        /* 2. 大きすぎるトップ画像をスマホの画面幅に綺麗に収める */
-        img, svg {
-            max-width: 100%;
-            height: auto;
-            padding: 0 !important;
-        }
-
-        .project-card, .project-name-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 20px 15px;
-        }
-
-        .project-name {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-    }
         /* 全体のベーススタイル */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -89,11 +111,12 @@
         }
 
         .section-title {
-            font-size: 20px;
-            font-weight: bold;
-            color: #ff4500;
-            margin-bottom: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
             letter-spacing: 2px;
+            color: #2563eb; 
+            margin-bottom: 16px;
         }
 
         /* ご挨拶セクション */
@@ -106,15 +129,6 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
             border: 1px solid #f1f5f9;
             text-align: center;
-        }
-
-        .section-title {
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #2563eb; 
-            margin-bottom: 16px;
         }
 
         /* 本文のスタイル */
@@ -130,14 +144,6 @@
             margin-bottom: 16px;
         }
 
-        .section-title {
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #2563eb; 
-            margin: 0;
-        }
         /* プロジェクトカード全体の枠組み */
         .project-card {
             background-color: #ffffff;
