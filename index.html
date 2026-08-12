@@ -14,13 +14,25 @@
             overflow-x: hidden;
         }
 
+        .container {
+            width: 100%;
+            max-width: 850px;
+            background-color: #ffffff;
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8), 
+                inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+            box-sizing: border-box;
+            padding: 10px 10px !important;
+            border-radius: 24px;
+            margin: 60px auto; 
+        }
+
         /* 2. 大きすぎるトップ画像をスマホの画面幅に綺麗に収める */
         img, svg {
             max-width: 100%;
             height: auto;
+            padding: 0 !important;
         }
 
-        /* 3. プロジェクトカードのレイアウトを縦並びにして見やすくする */
         .project-card, .project-name-box {
             display: flex;
             flex-direction: column;
@@ -29,7 +41,6 @@
             padding: 20px 15px;
         }
 
-        /* 4. プロジェクト名や文字のサイズをスマホ用に調整 */
         .project-name {
             font-size: 1.5rem;
             margin-bottom: 10px;
