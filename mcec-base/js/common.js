@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (menuContainer) {
         menuContainer.innerHTML = `
             <ul class="menu-list">
-                <li class="menu-item"><a href="shopping_cneter_view.html" class="menu-link">ショップ閲覧・ホーム</a></li>
+                <li class="menu-item"><a href="shopping_center_view.html" class="menu-link">ショップ閲覧・ホーム</a></li>
                 <li class="menu-item"><a href="login.html" class="menu-link">ログイン</a></li>
                 <li class="menu-item"><a href="newaccount.html" class="menu-link">ショップ・アカウント登録</a></li>
                 <li class="menu-item"><a href="shoping_login.html" class="menu-link">ユーザーログイン・新規登録</a></li>
