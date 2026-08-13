@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>売り上げデータ - micro-EC</title>
+    <style>
+        body {
+            background-color: #f0f2f5;
+            color: #333333;
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        /* 全体を包むメインラッパー（全体幅850px） */
+        .wrapper {
+            display: flex;
+            gap: 24px;
+            width: 100%;
+            max-width: 850px;
+            box-sizing: border-box;
+        }
+
+        /* 左側（共通メニューエリア） */
+        .sidebar {
+            width: 300px;
+            flex-shrink: 0;
+        }
+
+        /* 右側（メインコンテンツエリア） */
+        .main-content {
+            flex-grow: 1;
+        }
+
+        .page-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #e67e22;
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+        #common-menu {
+            font-size: 14px;
+        }
+        /* 共通メニュー内のリスト用スタイル */
+        #common-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #common-menu li {
+            margin-bottom: 8px;
+        }
+        #common-menu a {
+            color: #333333;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        #common-menu a:hover {
+            background-color: #fffaf5;
+            border-color: #e67e22;
+            color: #e67e22;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        .card:last-child {
+            margin-bottom: 0;
+        }
+
+        /* セクションスタイル */
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #e67e22;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f2f5;
+            padding-bottom: 12px;
+        }
+        .sub-heading {
+            font-size: 15px;
+            font-weight: bold;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        /* データリスト */
+        .data-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+        }
+        .data-item {
+            margin-bottom: 8px;
+        }
+        .data-item span {
+            font-weight: bold;
+        }
+
+        /* リンクスタイル */
+        .link-text {
+            color: #e67e22;
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-block;
+            margin-top: 8px;
+            transition: opacity 0.2s;
+        }
+        .link-text:hover {
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+
+        /* フォーム行 */
+        .form-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .form-group-inline {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-label-small {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+        .form-select, .btn-action {
+            padding: 8px 12px;
+            background-color: #ffffff;
+            border: 1px solid #dcdcdc;
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .form-select:focus, .btn-action:hover {
+            border-color: #e67e22;
+        }
+        .btn-action {
+            cursor: pointer;
+            font-weight: bold;
+            color: #333;
+            background-color: #fff;
+        }
+        .btn-action:hover {
+            background-color: #fffaf5;
+            color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- 左側：サイドバー（共通メニュー） -->
+    <div class="sidebar">
+        <div class="card">
+            <h2 class="page-title">画面設計・各画面リンク</h2>
+            <!-- ここに共通メニューがJSで自動的に差し込まれます -->
+            <div id="common-menu"></div>
+        </div>
+    </div>
+
+    <!-- 右側：メインコンテンツ（売り上げデータ画面） -->
+    <div class="main-content">
+        <div class="card">
+            <h2 class="section-title">売り上げデータ</h2>
+            
+            <!-- 総売り上げ・各期間データ -->
+            <ul class="data-list">
+                <li class="data-item">総売り上げ：<span>100,000円</span></li>
+                <li class="data-item">今月：<span>4,300円</span></li>
+                <li class="data-item">月間(26/8月分)：<span>16,000円</span></li>
+                <li class="data-item">年間(26/1～今月)：<span>50,000円</span></li>
+                <li class="data-item">去年(25/1～25/12)：<span>50,000円</span></li>
+            </ul>
+
+            <!-- 26年8月明細 -->
+            <div class="sub-heading" style="margin-top: 24px;">26年8月 明細</div>
+            <ul class="data-list">
+                <li class="data-item">・売りげ個数:6 総額:30,000円</li>
+            </ul>
+            <a href="#" class="link-text">売り上げ詳細のPDFを出力する</a>
+
+            <!-- 明細リンク -->
+            <div class="sub-heading">明細リンク</div>
+            <div class="form-row">
+                <div class="form-group-inline">
+                    <span class="form-label-small">年選択</span>
+                    <select class="form-select">
+                        <option>2024年</option>
+                        <option>2025年</option>
+                        <option selected>2026年</option>
+                    </select>
+                </div>
+                <div class="form-group-inline">
+                    <span class="form-label-small">月選択</span>
+                    <select class="form-select">
+                        <option>6月</option>
+                        <option selected>8月</option>
+                    </select>
+                </div>
+                <button type="button" class="btn-action" style="margin-top: 18px;">明細ページへ</button>
+            </div>
+
+            <!-- 年間明細 -->
+            <div class="sub-heading">年間明細</div>
+            <div class="form-row">
+                <div class="form-group-inline">
+                    <select class="form-select">
+                        <option>2024年</option>
+                        <option>2025年</option>
+                        <option selected>2026年</option>
+                    </select>
+                </div>
+                <button type="button" class="btn-action">PDF明細出力</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 共通JSを読み込む -->
+<script src="js/common.js"></script>
+
+</body>
+</html>

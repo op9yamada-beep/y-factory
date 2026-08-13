@@ -1,0 +1,26 @@
+document.addEventListener("DOMContentLoaded", function() {
+    // 差し込みたい場所の要素を取得し、共通のメニューHTMLを流し込む
+    const menuContainer = document.getElementById("common-menu");
+    if (menuContainer) {
+        menuContainer.innerHTML = `
+            <ul class="menu-list">
+                <li class="menu-item"><a href="shopping_cneter_view.html" class="menu-link">マイページ・ホーム</a></li>
+                <li class="menu-item"><a href="login.html" class="menu-link">ログイン</a></li>
+                <li class="menu-item"><a href="newaccount.html" class="menu-link">新規アカウント登録</a></li>
+                <li class="menu-item"><a href="shoping_login.html" class="menu-link">ショップログイン・新規登録</a></li>
+                <li class="menu-item"><a href="shoping_pass_set.html" class="menu-link">パスワード設定</a></li>
+                <li class="menu-item"><a href="products.html" class="menu-link">商品一覧</a></li>
+                <li class="menu-item"><a href="products_cart.html" class="menu-link">カート</a></li>
+                <li class="menu-item"><a href="shoping_address_set.html" class="menu-link">お客様情報入力</a></li>
+                <li class="menu-item"><a href="purchasing_decision.html" class="menu-link">ご購入の内容確認</a></li>
+                <li class="menu-item"><a href="shoping_address_edit.html" class="menu-link">お届け先の指定・変更</a></li>
+                <li class="menu-item"><a href="order.html" class="menu-link">オーダー管理</a></li>
+                <li class="menu-item"><a href="sale.html" class="menu-link">売り上げデータ</a></li>
+                <li class="menu-item"><a href="manager.html" class="menu-link">マネージャー・管理者</a></li>
+                <li class="menu-item"><a href="new.html" class="menu-link">新規登録・完了系</a></li>
+                <li class="menu-item"><a href="p_edit.html" class="menu-link">商品編集</a></li>
+                <li class="menu-item"><a href="after_credit.html" class="menu-link">決済完了後</a></li>
+            </ul>
+        `;
+    }
+});

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>オーダーリクエスト管理画面 - micro-EC</title>
+    <style>
+        body {
+            background-color: #f0f2f5;
+            color: #333333;
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        /* 全体を包むメインラッパー（全体幅850px） */
+        .wrapper {
+            display: flex;
+            gap: 24px;
+            width: 100%;
+            max-width: 850px;
+            box-sizing: border-box;
+        }
+
+        /* 左側（共通メニューエリア） */
+        .sidebar {
+            width: 300px;
+            flex-shrink: 0;
+        }
+
+        /* 右側（メインコンテンツエリア） */
+        .main-content {
+            flex-grow: 1;
+        }
+
+        .page-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #e67e22;
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+        #common-menu {
+            font-size: 14px;
+        }
+        /* 共通メニュー内のリスト用スタイル */
+        #common-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #common-menu li {
+            margin-bottom: 8px;
+        }
+        #common-menu a {
+            color: #333333;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        #common-menu a:hover {
+            background-color: #fffaf5;
+            border-color: #e67e22;
+            color: #e67e22;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        .card:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* オーダーアイテムのスタイル */
+        .order-item {
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .order-item:last-child {
+            padding-bottom: 0;
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+        .order-text {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        .btn-reply {
+            display: inline-block;
+            padding: 6px 16px;
+            background-color: #ffffff;
+            border: 1px solid #dcdcdc;
+            border-radius: 6px;
+            color: #333333;
+            font-size: 13px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-reply:hover {
+            border-color: #e67e22;
+            background-color: #fffaf5;
+            color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- 左側：サイドバー（共通メニュー） -->
+    <div class="sidebar">
+        <div class="card">
+            <h2 class="page-title">画面設計・各画面リンク</h2>
+            <!-- ここに共通メニューがJSで自動的に差し込まれます -->
+            <div id="common-menu"></div>
+        </div>
+    </div>
+
+    <!-- 右側：メインコンテンツ（オーダーリクエスト管理画面） -->
+    <div class="main-content">
+        <div class="card">
+            <h2 class="page-title" style="font-size: 18px; border-bottom: 2px solid #f0f2f5; padding-bottom: 12px; margin-bottom: 20px;">オーダーリクエスト管理画面</h2>
+            
+            <!-- オーダー1件目 -->
+            <div class="order-item">
+                <div class="order-text">
+                    2026/08/09 17:22 氏名:山田 太郎様 住所 : 大阪1-1-1 決済方法 : paypay決済 mail:mail@mail.com 電話番号:070-0000-0000 商品名 : 酒1 単価500円 個数2 消費税10% 100円 送料660円 総額1660円 (500*2+100+660)<br>
+                    メッセージ : 〇〇日までに送ってほしいです
+                </div>
+                <a href="#" class="btn-reply">返信</a>
+            </div>
+
+            <!-- オーダー2件目 -->
+            <div class="order-item">
+                <div class="order-text">
+                    2026/08/09 17:20 氏名:山田 花子様 住所 : 大阪1-1-1 決済方法 : paypay決済 mail:mail@mail.com 電話番号:070-0000-0000 商品名 : 酒1 単価500円 個数2 消費税10% 100円 送料660円 総額1660円 (500*2+100+660)<br>
+                    メッセージ : 〇〇日までに送ってほしいです
+                </div>
+                <a href="#" class="btn-reply">返信</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 共通JSを読み込む -->
+<script src="js/common.js"></script>
+
+</body>
+</html>

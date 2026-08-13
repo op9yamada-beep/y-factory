@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>商品登録画面 - micro-EC</title>
+    <style>
+        body {
+            background-color: #f0f2f5;
+            color: #333333;
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        /* 全体を包むメインラッパー（全体幅850px） */
+        .wrapper {
+            display: flex;
+            gap: 24px;
+            width: 100%;
+            max-width: 850px;
+            box-sizing: border-box;
+        }
+
+        /* 左側（共通メニューエリア） */
+        .sidebar {
+            width: 300px;
+            flex-shrink: 0;
+        }
+
+        /* 右側（メインコンテンツエリア） */
+        .main-content {
+            flex-grow: 1;
+        }
+
+        .page-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #e67e22;
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+        #common-menu {
+            font-size: 14px;
+        }
+        /* 共通メニュー内のリスト用スタイル */
+        #common-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #common-menu li {
+            margin-bottom: 8px;
+        }
+        #common-menu a {
+            color: #333333;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        #common-menu a:hover {
+            background-color: #fffaf5;
+            border-color: #e67e22;
+            color: #e67e22;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        .card:last-child {
+            margin-bottom: 0;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px 14px;
+            background-color: #ffffff;
+            border: 1px solid #dcdcdc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 14px;
+            resize: vertical;
+            transition: border-color 0.2s;
+        }
+        .form-control:focus {
+            border-color: #e67e22;
+            outline: none;
+        }
+        .image-upload-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .btn-sub {
+            padding: 8px 14px;
+            background-color: #ffffff;
+            border: 1px solid #dcdcdc;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-sub:hover {
+            background-color: #f8f9fa;
+        }
+        .file-name {
+            font-size: 14px;
+            color: #555555;
+        }
+        .button-group {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-top: 24px;
+        }
+        .btn {
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-draft {
+            background-color: #ffffff;
+            border: 1px solid #dcdcdc;
+            color: #333333;
+        }
+        .btn-draft:hover {
+            background-color: #f8f9fa;
+        }
+        .btn-submit {
+            background-color: #e67e22;
+            border: none;
+            color: #ffffff;
+        }
+        .btn-submit:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- 左側：サイドバー（メニュー） -->
+    <div class="sidebar">
+        <div class="card">
+            <h2 class="page-title">メニュー</h2>
+            <!-- ここに共通メニューがJSで自動的に差し込まれます -->
+            <div id="common-menu"></div>
+        </div>
+    </div>
+
+    <!-- 右側：メインコンテンツ（商品登録フォーム） -->
+    <div class="main-content">
+        <div class="card">
+            <h2 class="page-title">商品登録画面</h2>
+            <div class="form-group">
+                <label>商品名</label>
+                <input type="text" class="form-control" placeholder="">
+            </div>
+
+            <div class="form-group">
+                <label>商品説明</label>
+                <textarea class="form-control" rows="4" placeholder=""></textarea>
+            </div>
+
+            <div class="image-upload-row">
+                <button type="button" class="btn-sub">画像登録</button>
+                <span class="file-name">products1.jpg</span>
+            </div>
+
+            <div class="form-group">
+                <label>商品個数</label>
+                <input type="number" class="form-control" style="max-width: 120px;" placeholder="">
+            </div>
+
+            <div class="form-group">
+                <label>値段</label>
+                <input type="number" class="form-control" style="max-width: 140px;" placeholder="">
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn btn-draft">下書き</button>
+                <button type="button" class="btn btn-submit">出品</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 共通JSを読み込む -->
+<script src="js/common.js"></script>
+
+</body>
+</html>

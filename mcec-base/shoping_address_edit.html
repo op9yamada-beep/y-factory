@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>お届け先の指定・変更 - micro-EC</title>
+    <style>
+        body {
+            background-color: #f0f2f5;
+            color: #333333;
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        /* 全体を包むメインラッパー（全体幅850px） */
+        .wrapper {
+            display: flex;
+            gap: 24px;
+            width: 100%;
+            max-width: 850px;
+            box-sizing: border-box;
+        }
+
+        /* 左側（共通メニューエリア） */
+        .sidebar {
+            width: 300px;
+            flex-shrink: 0;
+        }
+
+        /* 右側（メインコンテンツエリア） */
+        .main-content {
+            flex-grow: 1;
+        }
+
+        .page-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #e67e22;
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+        #common-menu {
+            font-size: 14px;
+        }
+        /* 共通メニュー内のリスト用スタイル */
+        #common-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #common-menu li {
+            margin-bottom: 8px;
+        }
+        #common-menu a {
+            color: #333333;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        #common-menu a:hover {
+            background-color: #fffaf5;
+            border-color: #e67e22;
+            color: #e67e22;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        .card:last-child {
+            margin-bottom: 0;
+        }
+
+        /* セクションタイトル */
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #e67e22;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f2f5;
+            padding-bottom: 12px;
+        }
+
+        /* フォーム要素 */
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+        .form-group label span.optional {
+            font-weight: normal;
+            color: #666;
+            font-size: 13px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px 14px;
+            background-color: #ffffff;
+            border: 1px solid #dcdcdc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+        .form-control:focus {
+            border-color: #e67e22;
+            outline: none;
+        }
+
+        /* 郵便番号行のレイアウト */
+        .zip-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .btn-outline {
+            padding: 10px 16px;
+            background-color: #ffffff;
+            border: 1px solid #dcdcdc;
+            border-radius: 8px;
+            color: #333333;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        .btn-outline:hover {
+            border-color: #e67e22;
+            background-color: #fffaf5;
+            color: #e67e22;
+        }
+
+        /* チェックボックス行 */
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 20px 0;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .checkbox-row input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            accent-color: #e67e22;
+        }
+
+        /* 変更ボタン */
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #ffffff;
+            border: 1px solid #333333;
+            border-radius: 8px;
+            color: #333333;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-sizing: border-box;
+        }
+        .btn-submit:hover {
+            background-color: #fffaf5;
+            border-color: #e67e22;
+            color: #e67e22;
+        }
+
+        /* 戻るリンク */
+        .back-link {
+            display: inline-block;
+            color: #e67e22;
+            text-decoration: none;
+            font-size: 14px;
+            margin-top: 20px;
+            transition: opacity 0.2s;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- 左側：サイドバー（共通メニュー） -->
+    <div class="sidebar">
+        <div class="card">
+            <h2 class="page-title">画面設計・各画面リンク</h2>
+            <!-- ここに共通メニューがJSで自動的に差し込まれます -->
+            <div id="common-menu"></div>
+        </div>
+    </div>
+
+    <!-- 右側：メインコンテンツ（お届け先の指定・変更画面） -->
+    <div class="main-content">
+        <div class="card">
+            <h2 class="section-title">お届け先の指定・変更</h2>
+            
+            <!-- 郵便番号 -->
+            <div class="form-group">
+                <label>郵便番号</label>
+                <div class="zip-row">
+                    <input type="text" class="form-control" placeholder="例：5400001">
+                    <button type="button" class="btn-outline">住所検索</button>
+                </div>
+            </div>
+
+            <!-- 都道府県 -->
+            <div class="form-group">
+                <label>都道府県</label>
+                <select class="form-control">
+                    <option value="" disabled selected>選択してください</option>
+                    <option>大阪府</option>
+                    <option>東京都</option>
+                    <option>京都府</option>
+                    <!-- その他都道府県 -->
+                </select>
+            </div>
+
+            <!-- 市町村 -->
+            <div class="form-group">
+                <label>市町村</label>
+                <input type="text" class="form-control" placeholder="例：大阪市中央区">
+            </div>
+
+            <!-- 番地 -->
+            <div class="form-group">
+                <label>番地</label>
+                <input type="text" class="form-control" placeholder="例：1-1-1">
+            </div>
+
+            <!-- マンション名・号室 -->
+            <div class="form-group">
+                <label>マンション名・号室 <span class="optional">（任意）</span></label>
+                <input type="text" class="form-control" placeholder="例：大阪マンション102">
+            </div>
+
+            <!-- チェックボックス -->
+            <label class="checkbox-row">
+                <input type="checkbox">
+                <span>会員情報の登録住所もこの住所に変更する</span>
+            </label>
+
+            <!-- 変更ボタン -->
+            <button type="button" class="btn-submit">お届け先を変更する</button>
+
+            <!-- 戻るリンク -->
+            <div>
+                <a href="#" class="back-link">← 購入確認画面へ戻る</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 共通JSを読み込む -->
+<script src="js/common.js"></script>
+
+</body>
+</html>
