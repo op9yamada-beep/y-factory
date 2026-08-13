@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>メールアドレス変更 - micro-EC</title>
+    <style>
+        body {
+            background-color: #f0f2f5;
+            color: #333333;
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        /* 全体を包むメインラッパー（全体幅850px） */
+        .wrapper {
+            display: flex;
+            gap: 24px;
+            width: 100%;
+            max-width: 850px;
+            box-sizing: border-box;
+        }
+
+        /* 左側（共通メニューエリア） */
+        .sidebar {
+            width: 300px;
+            flex-shrink: 0;
+        }
+
+        /* 右側（メインコンテンツエリア） */
+        .main-content {
+            flex-grow: 1;
+        }
+
+        .page-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #e67e22;
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+        #common-menu {
+            font-size: 14px;
+        }
+        /* 共通メニュー内のリスト用スタイル */
+        #common-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #common-menu li {
+            margin-bottom: 8px;
+        }
+        #common-menu a {
+            color: #333333;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        #common-menu a:hover {
+            background-color: #fffaf5;
+            border-color: #e67e22;
+            color: #e67e22;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        .card:last-child {
+            margin-bottom: 0;
+        }
+
+        /* セクションタイトル */
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #e67e22;
+            margin-top: 0;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #f0f2f5;
+            padding-bottom: 12px;
+        }
+
+        /* 説明文・補足 */
+        .section-desc {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        .current-mail {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* フォーム要素 */
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px 14px;
+            background-color: #ffffff;
+            border: 1px solid #dcdcdc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+        .form-control:focus {
+            border-color: #e67e22;
+            outline: none;
+        }
+        .form-control:disabled {
+            background-color: #f5f5f5;
+            color: #aaa;
+            cursor: not-allowed;
+        }
+
+        /* 注釈テキスト */
+        .note-gray {
+            font-size: 12px;
+            color: #777;
+            margin: 12px 0 8px 0;
+        }
+
+        /* ボタン共通 */
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #ffffff;
+            border: 1px solid #333333;
+            border-radius: 8px;
+            color: #333333;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.2s;
+            box-sizing: border-box;
+        }
+        .btn-submit:hover {
+            background-color: #fffaf5;
+            border-color: #e67e22;
+            color: #e67e22;
+        }
+        .btn-submit:disabled {
+            background-color: #f5f5f5;
+            border-color: #ddd;
+            color: #aaa;
+            cursor: not-allowed;
+        }
+
+        /* 戻るリンク */
+        .back-link-wrap {
+            margin-top: 24px;
+        }
+        .back-link {
+            color: #e67e22;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* 設計メモ */
+        .design-memo {
+            font-size: 11px;
+            color: #999;
+            margin-top: 20px;
+            border-top: 1px dashed #eee;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- 左側：サイドバー（共通メニュー） -->
+    <div class="sidebar">
+        <div class="card">
+            <h2 class="page-title">画面設計・各画面リンク</h2>
+            <!-- ここに共通メニューがJSで自動的に差し込まれます -->
+            <div id="common-menu"></div>
+        </div>
+    </div>
+
+    <!-- 右側：メインコンテンツ（メールアドレス変更画面） -->
+    <div class="main-content">
+        <div class="card">
+            <h2 class="section-title">メールアドレス変更</h2>
+            <div class="section-desc">※変更するメールアドレスを入力し確認メール記載の認証番号を入力してメールアドレスを変更してください。</div>
+            
+            <div class="current-mail">現在のメールアドレス：mail@mail.com</div>
+
+            <!-- 新規メールアドレス -->
+            <div class="form-group">
+                <label>メールアドレス</label>
+                <input type="email" id="new-mail" class="form-control" placeholder="例：new_example@mail.com">
+            </div>
+
+            <!-- パスワード（セキュリティ対策用） -->
+            <div class="form-group">
+                <label>パスワード</label>
+                <input type="password" id="current-pass" class="form-control" placeholder="現在のパスワードを入力">
+            </div>
+
+            <!-- 確認メールを送信ボタン -->
+            <button type="button" id="btn-send-mail" class="btn-submit">確認メールを送信</button>
+
+            <div class="note-gray">※確認メールに記載されている認証番号を入力してください</div>
+
+            <!-- 認証番号入力エリア（初期状態は非活性/無効化を想定） -->
+            <div class="form-group" style="margin-top: 16px;">
+                <label style="color: #555;">認証番号</label>
+                <input type="text" id="auth-code" class="form-control" placeholder="6桁の認証番号" disabled>
+            </div>
+
+            <!-- メールアドレス変更ボタン -->
+            <button type="button" id="btn-change-exec" class="btn-submit" style="margin-top: 16px;" disabled>メールアドレス変更</button>
+
+            <!-- 変更せず戻るリンク -->
+            <div class="back-link-wrap">
+                <a href="#" class="back-link">変更せず戻る</a>
+            </div>
+
+            <div class="design-memo">※設計メモ：確認メールを送信するまで認証番号コントロールは非活性</div>
+        </div>
+    </div>
+</div>
+
+<!-- 共通JSを読み込む -->
+<script src="js/common.js"></script>
+
+</body>
+</html>
