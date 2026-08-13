@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <li class="menu-item"><a href="shoping_address_set.html" class="menu-link">お客様情報入力</a></li>
                 <li class="menu-item"><a href="purchasing_decision.html" class="menu-link">ご購入の内容確認</a></li>
                 <li class="menu-item"><a href="shoping_address_edit.html" class="menu-link">お届け先の指定・変更</a></li>
+		<li class="menu-item"><a href="choice_credit.html" class="menu-link">支払方法選択</a></li>
                 <li class="menu-item"><a href="order.html" class="menu-link">オーダー管理</a></li>
                 <li class="menu-item"><a href="sale.html" class="menu-link">売り上げデータ</a></li>
                 <li class="menu-item"><a href="manager.html" class="menu-link">ストア管理</a></li>
