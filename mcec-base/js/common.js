@@ -7,9 +7,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 <li class="menu-item"><a href="shopping_center_view.html" class="menu-link">商品閲覧・ホーム</a></li>
                 <li class="menu-item"><a href="login.html" class="menu-link">ショップ・ログイン</a></li>
                 <li class="menu-item"><a href="newaccount.html" class="menu-link">ショップ・アカウント登録</a></li>
-		<li class="menu-item"><a href="after_new_regist.html" class="menu-link">ショップ・アカウント登録完了</a></li>
+		<li class="menu-item"><a href="after_shop_regist.html" class="menu-link">ショップ・アカウント登録完了</a></li>
                 <li class="menu-item"><a href="shoping_login.html" class="menu-link">ユーザーログイン・新規登録</a></li>
+		<!-- <li class="menu-item"><a href="after_user_mail.html" class="menu-link">ユーザー・確認メール送信後</a></li> -->
                 <li class="menu-item"><a href="shoping_pass_set.html" class="menu-link">ユーザー・パスワード設定</a></li>
+		<li class="menu-item"><a href="after_user_regist.html" class="menu-link">ユーザー・アカウント登録完了</a></li>
                 <li class="menu-item"><a href="products.html" class="menu-link">ショップ・商品一覧</a></li>
                 <li class="menu-item"><a href="products_cart.html" class="menu-link">カート</a></li>
                 <li class="menu-item"><a href="shoping_address_set.html" class="menu-link">お客様情報入力</a></li>
