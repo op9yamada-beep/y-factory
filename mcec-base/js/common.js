@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <li class="menu-item"><a href="order.html" class="menu-link">オーダー管理</a></li>
                 <li class="menu-item"><a href="sale.html" class="menu-link">売り上げデータ</a></li>
                 <li class="menu-item"><a href="manager.html" class="menu-link">ショップ管理</a></li>
+		<li class="menu-item"><a href="shop_manager.html" class="menu-link">ショップ情報管理</a></li>
                 <li class="menu-item"><a href="new.html" class="menu-link">商品登録</a></li>
                 <li class="menu-item"><a href="p_edit.html" class="menu-link">商品編集</a></li>
                 <li class="menu-item"><a href="after_credit.html" class="menu-link">決済完了後</a></li>
