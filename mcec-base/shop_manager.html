@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>ログイン - micro-EC</title>
+    <title>ショップ情報管理 - micro-EC</title>
     <style>
         body {
             background-color: #f0f2f5;
@@ -17,7 +17,6 @@
             box-sizing: border-box;
         }
 
-        /* 全体を包むメインラッパー（全体幅850px） */
         .wrapper {
             display: flex;
             gap: 24px;
@@ -26,186 +25,140 @@
             box-sizing: border-box;
         }
 
-        /* 左側（共通メニューエリア） */
-        .sidebar {
-            width: 300px;
-            flex-shrink: 0;
-        }
-
-        /* 右側（メインコンテンツエリア） */
-        .main-content {
-            flex-grow: 1;
-        }
-
-        .page-title {
-            font-size: 16px;
-            font-weight: bold;
-            color: #e67e22;
-            margin-top: 0;
-            margin-bottom: 16px;
-        }
-        #common-menu {
-            font-size: 14px;
-        }
-        /* 共通メニュー内のリスト用スタイル */
-        #common-menu ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        #common-menu li {
-            margin-bottom: 8px;
-        }
-        #common-menu a {
-            color: #333333;
-            text-decoration: none;
-            display: block;
-            padding: 8px 12px;
-            background-color: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 6px;
-            transition: all 0.2s;
-        }
-        #common-menu a:hover {
-            background-color: #fffaf5;
-            border-color: #e67e22;
-            color: #e67e22;
-        }
+        .sidebar { width: 300px; flex-shrink: 0; }
+        .main-content { flex-grow: 1; }
 
         .card {
             background-color: #ffffff;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            margin-bottom: 20px;
-            box-sizing: border-box;
-        }
-        .card:last-child {
-            margin-bottom: 0;
+            padding: 32px 24px;
+            margin-bottom: 24px;
         }
 
-        /* セクションタイトル */
-        .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #e67e22;
-            margin-top: 0;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #f0f2f5;
-            padding-bottom: 12px;
-        }
-
-        /* フォーム要素 */
-        .form-group {
-            margin-bottom: 16px;
-        }
-        .form-group label {
-            display: block;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 6px;
-        }
-        .form-control {
+        .page-title { font-size: 16px; font-weight: bold; color: #e67e22; margin-bottom: 16px; }
+        
+        /* フォーム関連 */
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-weight: bold; margin-bottom: 8px; font-size: 14px; }
+        input[type="text"], input[type="url"], textarea, select {
             width: 100%;
-            padding: 10px 14px;
-            background-color: #ffffff;
-            border: 1px solid #dcdcdc;
-            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
             box-sizing: border-box;
-            font-size: 14px;
-            transition: border-color 0.2s;
         }
-        .form-control:focus {
-            border-color: #e67e22;
-            outline: none;
-        }
-
-        /* ボタン共通 */
+        .checkbox-label { display: flex; align-items: center; font-weight: normal; font-size: 13px; margin-bottom: 10px; }
+        
+        .time-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .time-row input { width: 80px; }
+        
         .btn-submit {
             display: block;
             width: 100%;
             padding: 12px;
-            background-color: #ffffff;
-            border: 1px solid #333333;
-            border-radius: 8px;
-            color: #333333;
+            background-color: #fff;
+            border: 2px solid #e67e22;
+            color: #e67e22;
             font-weight: bold;
-            font-size: 15px;
+            border-radius: 6px;
             cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            margin-top: 20px;
             transition: all 0.2s;
-            box-sizing: border-box;
         }
-        .btn-submit:hover {
-            background-color: #fffaf5;
-            border-color: #e67e22;
-            color: #e67e22;
-        }
-
-        /* 新規登録セクション切り替え用見出し */
-        .sub-heading-center {
-            text-align: center;
-            font-weight: bold;
-            font-size: 14px;
-            margin: 30px 0 20px 0;
-            color: #333;
-        }
-
-        /* 注意書きテキスト */
-        .note-text {
-            font-size: 12px;
-            color: #666;
-            margin-top: 8px;
-            text-align: center;
-        }
-
-        /* サポートリンク */
-        .support-link-wrap {
-            text-align: center;
-            margin-top: 24px;
-        }
-        .support-link {
-            color: #e67e22;
-            text-decoration: none;
-            font-size: 14px;
-            transition: opacity 0.2s;
-        }
-        .support-link:hover {
-            text-decoration: underline;
-            opacity: 0.8;
-        }
+        .btn-submit:hover { background-color: #e67e22; color: #fff; }
+        
+        .back-link { display: inline-block; color: #e67e22; text-decoration: none; font-size: 14px; font-weight: bold; }
+        
+        /* 共通メニュー用JS */
+        #common-menu { font-size: 14px; }
+        #common-menu ul { list-style: none; padding: 0; }
+        #common-menu li { margin-bottom: 8px; }
+        #common-menu a { color: #333; text-decoration: none; display: block; padding: 8px; background: #f8f9fa; border-radius: 6px; }
     </style>
 </head>
 <body>
 
 <div class="wrapper">
-    <!-- 左側：サイドバー（共通メニュー） -->
     <div class="sidebar">
-        <div class="card">
-            <h2 class="page-title">画面設計・各画面リンク</h2>
-            <!-- ここに共通メニューがJSで自動的に差し込まれます -->
+        <div class="card" style="padding: 24px; margin-bottom: 0;">
+            <h2 class="page-title">管理画面メニュー</h2>
             <div id="common-menu"></div>
         </div>
     </div>
 
-    <!-- 右側：メインコンテンツ（ログイン画面） -->
-    <div class="main-content">
+    <main class="main-content">
         <div class="card">
-            <h2 class="section-title">ショップ情報管理</h2>
+            <h2 class="page-title" style="color: #e67e22;">ショップ情報管理</h2>
             
-            <!-- ログインフォーム -->
+            <form>
+                <div class="form-group">
+                    <label>ショップ名</label>
+                    <input type="text" placeholder="例：〇〇酒造">
+                </div>
+                
+                <div class="form-group">
+                    <label>ショップロゴ</label>
+                    <input type="file">
+                </div>
 
-            <div class="form-group">
-                <label>ショップ情報管理ページ更新中</label>
+                <div class="form-group">
+                    <label>電話番号</label>
+                    <label class="checkbox-label"><input type="checkbox"> 非公開にする</label>
+                    <input type="text" placeholder="例：080-0000-0000">
+                </div>
 
+                <div class="form-group">
+                    <label>住所 <label class="checkbox-label" style="display:inline; margin-left:10px;"><input type="checkbox"> 住所を非公開にする</label></label>
+                    <input type="text" style="width:120px;" placeholder="郵便番号">
+                    <button type="button" style="margin-top:5px;">住所検索</button>
+                    <input type="text" placeholder="都道府県" style="margin-top:5px;">
+                    <input type="text" placeholder="市町村">
+                    <input type="text" placeholder="番地">
+                    <input type="text" placeholder="マンション名・号室（任意）">
+                </div>
+
+                <div class="form-group">
+                    <label>営業時間登録</label>
+                    <input type="text" placeholder="定休日" style="margin-bottom:10px;">
+                    <div style="background: #f9f9f9; padding:10px; border-radius:6px; margin-bottom:10px;">
+                        <strong>一括設定</strong>: 
+                        <input type="text" style="width:60px;" placeholder="10:00"> 〜 
+                        <input type="text" style="width:60px;" placeholder="18:00">
+                        <button type="button">設定</button>
+                    </div>
+                    
+                    <div class="time-row"><span>月</span><input type="text" placeholder="10:00">〜<input type="text" placeholder="18:00"></div>
+                    <div class="time-row"><span>火</span><input type="text" placeholder="10:00">〜<input type="text" placeholder="18:00"></div>
+                    <div class="time-row"><span>水</span><input type="text" placeholder="10:00">〜<input type="text" placeholder="18:00"></div>
+                    <div class="time-row"><span>木</span><input type="text" placeholder="10:00">〜<input type="text" placeholder="18:00"></div>
+                    <div class="time-row"><span>金</span><input type="text" placeholder="10:00">〜<input type="text" placeholder="18:00"></div>
+                    <div class="time-row"><span>土</span><input type="text" placeholder="10:00">〜<input type="text" placeholder="18:00"></div>
+                    <div class="time-row"><span>日</span><input type="text" placeholder="10:00">〜<input type="text" placeholder="18:00"></div>
+                    <div class="time-row"><span>祝</span><input type="text" placeholder="10:00">〜<input type="text" placeholder="18:00"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>こだわり・メッセージ</label>
+                    <textarea rows="5" placeholder="例:見学大歓迎です！"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>ホームページURL</label>
+                     <input type="text" placeholder="例:https://homepage/">
+                </div>
+                <div class="form-group">
+                    <label>お問い合わせ先</label>
+                     <input type="text" placeholder="shop-mail@mail.com">
+                </div>
+                <button type="submit" class="btn-submit">更新する</button>
+            </form>
+            
+            <div style="margin-top: 20px;">
+                <a href="#" class="back-link">← 更新せず管理画面に戻る</a>
+            </div>
         </div>
-    </div>
+    </main>
 </div>
 
-<!-- 共通JSを読み込む -->
 <script src="js/common.js"></script>
-
 </body>
 </html>
