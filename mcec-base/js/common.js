@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (menuContainer) {
         menuContainer.innerHTML = `
             <ul class="menu-list">
-                <li class="menu-item"><a href="shopping_center_view.html" class="menu-link">ショップ閲覧・ホーム</a></li>
+                <li class="menu-item"><a href="shopping_center_view.html" class="menu-link">商品閲覧・ホーム</a></li>
                 <li class="menu-item"><a href="login.html" class="menu-link">ショップ・ログイン</a></li>
                 <li class="menu-item"><a href="newaccount.html" class="menu-link">ショップ・アカウント登録</a></li>
                 <li class="menu-item"><a href="shoping_login.html" class="menu-link">ユーザーログイン・新規登録</a></li>
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		<li class="menu-item"><a href="choice_credit.html" class="menu-link">支払方法選択</a></li>
                 <li class="menu-item"><a href="order.html" class="menu-link">オーダー管理</a></li>
                 <li class="menu-item"><a href="sale.html" class="menu-link">売り上げデータ</a></li>
-                <li class="menu-item"><a href="manager.html" class="menu-link">ストア管理</a></li>
+                <li class="menu-item"><a href="manager.html" class="menu-link">ショップ管理</a></li>
                 <li class="menu-item"><a href="new.html" class="menu-link">商品登録</a></li>
                 <li class="menu-item"><a href="p_edit.html" class="menu-link">商品編集</a></li>
                 <li class="menu-item"><a href="after_credit.html" class="menu-link">決済完了後</a></li>
