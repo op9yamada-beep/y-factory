@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ご購入確認メール確認 - micro-EC</title>
+    <style>
+        body {
+            background-color: #f0f2f5;
+            color: #333333;
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        /* 全体を包むメインラッパー（全体幅850px） */
+        .wrapper {
+            display: flex;
+            gap: 24px;
+            width: 100%;
+            max-width: 850px;
+            box-sizing: border-box;
+        }
+
+        /* 左側（共通メニューエリア） */
+        .sidebar {
+            width: 300px;
+            flex-shrink: 0;
+        }
+
+        /* 右側（メインコンテンツエリア） */
+        .main-content {
+            flex-grow: 1;
+        }
+
+        .page-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #e67e22;
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+        #common-menu {
+            font-size: 14px;
+        }
+        /* 共通メニュー内のリスト用スタイル */
+        #common-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #common-menu li {
+            margin-bottom: 8px;
+        }
+        #common-menu a {
+            color: #333333;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        #common-menu a:hover {
+            background-color: #fffaf5;
+            border-color: #e67e22;
+            color: #e67e22;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 32px 24px;
+            margin-bottom: 24px;
+            box-sizing: border-box;
+        }
+        
+        .title {
+            color: #e67e22;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* メールプレビュー領域のスタイル */
+        .email-preview {
+            background-color: #fafbfc;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            padding: 24px;
+            font-size: 14px;
+            line-height: 1.8;
+            font-family: monospace, monospace; /* メールらしさを出す等幅系フォント */
+        }
+
+        .email-subject {
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+            color: #2c3e50;
+        }
+
+        .email-section {
+            border-top: 1px dashed #ccc;
+            margin: 16px 0;
+            padding-top: 12px;
+        }
+
+        .email-section-title {
+            font-weight: bold;
+            color: #e67e22;
+            margin-bottom: 8px;
+        }
+
+        .item-block {
+            margin-bottom: 12px;
+        }
+
+        .total-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 12px;
+            border-radius: 4px;
+            margin: 16px 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #e67e22;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: opacity 0.2s;
+            margin-top: 20px;
+        }
+        .back-link:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- 左側：サイドバー（共通メニュー） -->
+    <div class="sidebar">
+        <div class="card" style="padding: 24px; margin-bottom: 0;">
+            <h2 class="page-title">画面設計・各画面リンク</h2>
+            <!-- ここに共通メニューがJSで自動的に差し込まれます -->
+            <div id="common-menu"></div>
+        </div>
+    </div>
+
+    <!-- 右側：メインコンテンツ（メール確認画面） -->
+    <div class="main-content">
+        <div class="card">
+            <h2 class="title">送信メールテンプレート確認</h2>
+            <p style="font-size: 13px; color: #666; margin-bottom: 20px;">
+                ユーザーへ自動送信される「ご購入確認メール」のプレビューです。
+            </p>
+            
+            <div class="email-preview">
+                <div class="email-subject">
+                    Subject：【micro-EC】ご注文ありがとうございます（ご注文番号：#1001）
+                </div>
+
+                <p>〇〇 〇〇 様</p>
+                <p>この度は、「micro-EC」をご利用いただき、誠にありがとうございます。<br>
+                お客様のご注文を受け付けました。</p>
+                <p>以下の内容でご注文を承っておりますので、内容をご確認ください。</p>
+
+                <div class="email-section">
+                    <div class="email-section-title">■ ご注文情報</div>
+                    ・ご注文番号：#1001<br>
+                    ・ご注文日時：2026年08月15日 10:30<br>
+                    ・お支払い方法：PayPay決済
+                </div>
+
+                <div class="email-section">
+                    <div class="email-section-title">■ お届け先情報</div>
+                    ・お名前：山田 太郎 様<br>
+                    ・ご住所：〒530-0001 大阪府大阪市北区〇〇 1-2-3<br>
+                    ・お電話番号：090-0000-0000
+                </div>
+
+                <div class="email-section">
+                    <div class="email-section-title">■ ご注文商品明細</div>
+                    <div class="item-block">
+                        商品名：大阪の地酒 〇〇純米大吟醸 720ml<br>
+                        数量：1<br>
+                        価格：3,500円（税込）
+                    </div>
+                    <div class="item-block">
+                        商品名：地酒仕込みの梅酒 500ml<br>
+                        数量：1<br>
+                        価格：2,000円（税込）
+                    </div>
+                </div>
+
+                <div class="total-box">
+                    小計：5,500円<br>
+                    送料：800円<br>
+                    <strong>合計金額：6,300円（税込）</strong>
+                </div>
+
+                <div class="email-section">
+                    <div class="email-section-title">【今後の流れについて】</div>
+                    ただいま、在庫確認を行っております。<br>
+                    ショップより「お取り置き確認メール」または「発送完了メール」が届くまで、今しばらくお待ちください。<br><br>
+                    数日経ってもメールが届かない場合は、大変お手数ですが迷惑メールフォルダをご確認いただくか、下記までお問い合わせください。
+                </div>
+
+                <div class="email-section">
+                    <div class="email-section-title">【お問い合わせ窓口】</div>
+                    micro-EC カスタマーサポート<br>
+                    メールアドレス：mail@mail.com<br>
+                    担当：山田
+                </div>
+
+                <div style="border-top: 2px solid #333; margin-top: 20px; padding-top: 10px; text-align: center; font-size: 12px;">
+                    micro-EC（マイクロイーシー）<br>
+                    <a href="https://example.com/" target="_blank" style="color: #3498db;">https://example.com/</a>
+                </div>
+            </div>
+
+            <a href="#" class="back-link">← Micro-ECトップページへ戻る</a>
+        </div>
+    </div>
+</div>
+
+<!-- 共通JSを読み込む -->
+<script src="js/common.js"></script>
+
+</body>
+</html>
