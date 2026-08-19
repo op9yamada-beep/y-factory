@@ -83,7 +83,7 @@
             width: 100%;
             padding: 12px;
             background-color: #ffffff;
-            border: 1px solid #dcdcdc;
+            border: 1px solid #333;
             border-radius: 8px;
             text-align: center;
             text-decoration: none;
@@ -171,13 +171,12 @@
 
     <!-- 右側：メインコンテンツ（ログイン画面） -->
     <div class="main-content">
-        <div class="logo">micro-EC</div>
+       <div class="card">
+          <div class="logo">micro-EC</div>
+             <!-- 新規登録ボタン -->
+             <a href="#" class="btn-outline">新規登録</a>
 
-        <!-- 新規登録ボタン -->
-        <a href="#" class="btn-outline">新規登録</a>
-
-        <!-- ログインフォーム（カード型） -->
-        <div class="card">
+             <!-- ログインフォーム（カード型） -->
             <div class="form-group">
                 <label>メールアドレス</label>
                 <input type="text" class="form-control" placeholder="例：example@email.com">
@@ -186,11 +185,15 @@
                 <label>パスワード</label>
                 <input type="password" class="form-control" placeholder="パスワードを入力">
             </div>
+            <div class="form-group">
             <button type="submit" class="btn-primary">ログイン</button>
-        </div>
 
+	</div>
         <!-- LINEでログインボタン -->
-        <a href="#" class="btn-outline btn-line">LINEでログイン</a>
+        <div class="form-group">
+           <a href="#" class="btn-outline btn-line">LINEでログイン</a>
+        </div>
+        </div>
     </div>
 </div>
 
